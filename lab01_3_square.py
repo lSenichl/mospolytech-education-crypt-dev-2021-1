@@ -1,7 +1,4 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
-import random
-
-rand_int = random.randint(0, 9)
 
 hard_dictionary = {"а": "11", "б": "12", "в": "13",
                    "г": "14", "д": "15", "е": "16", "ё": "21",
@@ -14,20 +11,6 @@ hard_dictionary = {"а": "11", "б": "12", "в": "13",
                    "ю": "62", "я": "63"}
 
 
-def atbash(input):
-    return input.translate(str.maketrans(
-        alphabet + alphabet.upper(), alphabet[::-1] + alphabet.upper()[::-1]))
-
-
-def caesar_encode(input, step):
-    return input.translate(
-        str.maketrans(alphabet, alphabet[step:] + alphabet[:step]))
-
-
-def caesar_decode(input, step):
-    return input.translate(
-        str.maketrans(alphabet[step:] + alphabet[:step], alphabet))
-
 def square_encode(input):
     new_txt = ""
     for x in input:
@@ -36,6 +19,7 @@ def square_encode(input):
         else:
             new_txt += (x + x)
     return new_txt
+
 
 def square_decode(input):
     new_txt = ""
@@ -55,41 +39,6 @@ def square_decode(input):
             new_txt += x[0:1]
     return new_txt
 
-print(f'''
-ШИФР АТБАШ:
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{atbash(input_for_cipher_short())}
-
-Расшифрованный текст:
-{output_from_decrypted(atbash(atbash(input_for_cipher_short())))}
-
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{atbash(input_for_cipher_long())}
-
-Расшифрованный текст:
-{output_from_decrypted(atbash(atbash(input_for_cipher_long())))}
-''')
-
-print(f'''
-ШИФР ЦЕЗАРЯ:
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{caesar_encode(input_for_cipher_short(), rand_int)}
-
-Расшифрованный текст:
-{output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_short(), rand_int), rand_int))}
-
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{caesar_encode(input_for_cipher_long(), rand_int)}
-
-Расшифрованный текст:
-{output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_long(), rand_int), rand_int))}
-''')
 
 print(f'''
 КВАДРАТ ПОЛИБИЯ:
