@@ -1,19 +1,21 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import random
 
-rand_int = random.randint(0, 9)
+# случайное число для сдвига
+rand_int = random.randint(1, 32)
 
-
+# функция шифровки
 def caesar_encode(input, step):
     return input.translate(
         str.maketrans(alphabet, alphabet[step:] + alphabet[:step]))
 
-
+# функция дешифровки
 def caesar_decode(input, step):
     return input.translate(
         str.maketrans(alphabet[step:] + alphabet[:step], alphabet))
 
 
+# вывод результатов работы программы
 print(f'''
 ШИФР ЦЕЗАРЯ:
 КОРОТКИЙ ТЕКСТ:
