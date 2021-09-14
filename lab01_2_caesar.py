@@ -1,8 +1,8 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import random
 
-# случайное число для сдвига
-rand_int = random.randint(1, 32)
+key = 0
+key = int(input('Введите ключ: '))
 
 # функция шифровки
 def caesar_encode(input, step):
@@ -20,17 +20,17 @@ print(f'''
 ШИФР ЦЕЗАРЯ:
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
-{caesar_encode(input_for_cipher_short(), rand_int)}
+{caesar_encode(input_for_cipher_short(), key)}
 
 Расшифрованный текст:
 {output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_short(), rand_int), rand_int))}
+    input_for_cipher_short(), key), key))}
 
 ДЛИННЫЙ ТЕКСТ:
 Зашифрованный текст:
-{caesar_encode(input_for_cipher_long(), rand_int)}
+{caesar_encode(input_for_cipher_long(), key)}
 
 Расшифрованный текст:
 {output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_long(), rand_int), rand_int))}
+    input_for_cipher_long(), key), key))}
 ''')
