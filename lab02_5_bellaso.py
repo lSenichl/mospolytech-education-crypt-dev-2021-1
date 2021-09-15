@@ -2,33 +2,40 @@ from base import alphabet, input_for_cipher_short, input_for_cipher_long, output
 
 key = str(input('Введите ключ: '))
 
-def bellaso_decode(msg, key):
+# функция шифровки
+def bellaso_decode(input, key):
     decrypted = ''
     offset = 0
-    for ix in range(len(msg)):
-        if msg[ix] not in alphabet:
-            output = msg[ix]
+    for ix in range(len(input)):
+        if input[ix] not in alphabet:
+            output = input[ix]
             offset += -1
-        elif (alphabet.find(msg[ix])) > (len(alphabet) - (alphabet.find(key[((ix + offset) % len(key))])) - 1):
-            output = alphabet[(alphabet.find(msg[ix]) - (alphabet.find(key[((ix + offset) % len(key))]))) % 33]
+        elif (alphabet.find(input[ix])) > (len(alphabet) - (alphabet.find(key[((ix + offset) % len(key))])) - 1):
+            output = alphabet[(alphabet.find(
+                input[ix]) - (alphabet.find(key[((ix + offset) % len(key))]))) % 33]
         else:
-            output = alphabet[alphabet.find(msg[ix]) - (alphabet.find(key[((ix + offset) % len(key))]))]
+            output = alphabet[alphabet.find(
+                input[ix]) - (alphabet.find(key[((ix + offset) % len(key))]))]
         decrypted += output
     return decrypted
 
-def bellaso_encode(msg, key):
+# функция дешифровки
+def bellaso_encode(input, key):
     encoded = ''
     offset = 0
-    for ix in range(len(msg)):
-        if msg[ix] not in alphabet:
-            output = msg[ix]
+    for ix in range(len(input)):
+        if input[ix] not in alphabet:
+            output = input[ix]
             offset += -1
-        elif (alphabet.find(msg[ix])) > (len(alphabet) - (alphabet.find(key[((ix + offset) % len(key))])) - 1):
-            output = alphabet[(alphabet.find(msg[ix]) + (alphabet.find(key[((ix + offset) % len(key))]))) % 33]
+        elif (alphabet.find(input[ix])) > (len(alphabet) - (alphabet.find(key[((ix + offset) % len(key))])) - 1):
+            output = alphabet[(alphabet.find(
+                input[ix]) + (alphabet.find(key[((ix + offset) % len(key))]))) % 33]
         else:
-            output = alphabet[alphabet.find(msg[ix]) + (alphabet.find(key[((ix + offset) % len(key))]))]
+            output = alphabet[alphabet.find(
+                input[ix]) + (alphabet.find(key[((ix + offset) % len(key))]))]
         encoded += output
     return encoded
+
 
 # вывод результатов работы программы
 print(f'''

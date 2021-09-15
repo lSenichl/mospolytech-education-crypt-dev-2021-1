@@ -2,20 +2,21 @@ from base import alphabet, input_for_cipher_short, input_for_cipher_long, output
 
 key = str(input('Введите ключ: '))
 
-def vigenere_encode(input_string, enc_key):
+# функция шифровки
+def vigenere_encode(input, key):
     enc_string = ''
-    string_length = len(input_string)
+    string_length = len(input)
 
-    expanded_key = enc_key
+    expanded_key = key
     expanded_key_length = len(expanded_key)
 
     while expanded_key_length < string_length:
-        expanded_key = expanded_key + enc_key
+        expanded_key = expanded_key + key
         expanded_key_length = len(expanded_key)
 
     key_position = 0
 
-    for letter in input_string:
+    for letter in input:
         if letter in alphabet:
             position = alphabet.find(letter)
 
@@ -32,21 +33,21 @@ def vigenere_encode(input_string, enc_key):
             enc_string = enc_string + letter
     return(enc_string)
 
-
-def vigenere_decode(input_string, dec_key):
+# функция дешифровки
+def vigenere_decode(input, key):
     dec_string = ''
-    string_length = len(input_string)
+    string_length = len(input)
 
-    expanded_key = dec_key
+    expanded_key = key
     expanded_key_length = len(expanded_key)
 
     while expanded_key_length < string_length:
-        expanded_key = expanded_key + dec_key
+        expanded_key = expanded_key + key
         expanded_key_length = len(expanded_key)
 
     key_position = 0
 
-    for letter in input_string:
+    for letter in input:
         if letter in alphabet:
             position = alphabet.find(letter)
 

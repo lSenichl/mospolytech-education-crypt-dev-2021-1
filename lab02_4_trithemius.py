@@ -1,19 +1,20 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-def trithemius_decode(text):
+# функция шифровки
+def trithemius_decode(input):
     decode: str = ""
     k = 0
-    for position, symbol in enumerate(text):
+    for position, symbol in enumerate(input):
         index = (alphabet.find(symbol) + k) % len(alphabet)
         decode += alphabet[index]
         k -= 1
     return decode
 
-
-def trithemius_encode(text):
+# функция дешифровки
+def trithemius_encode(input):
     encode = ""
     k = 0
-    for position, symbol in enumerate(text):
+    for position, symbol in enumerate(input):
         index = (alphabet.find(symbol) + k) % len(alphabet)
         encode += alphabet[index]
         k += 1
