@@ -1,7 +1,6 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import random
 
-key = 0
 key = int(input('Введите ключ: '))
 
 # функция шифровки

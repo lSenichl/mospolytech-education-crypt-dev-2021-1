@@ -2,9 +2,10 @@ import re
 
 alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 
-dict = {'. ': ' тчк ', ', ': ' зпт ', '! ': ' вскл ', '? ': ' впр '}
+dict = {'.': 'тчк', ',': 'зпт'}
 
 def replace_all_to(input_text, dict):
+    input_text = input_text.replace(' ', '')
     for i, j in dict.items():
         input_text = input_text.replace(i, j)
     return input_text
