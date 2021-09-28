@@ -39,7 +39,7 @@ def bellaso_encode(input, key):
 
 # вывод результатов работы программы
 print(f'''
-Шифр Тритемия:
+Шифр Белазо:
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {bellaso_encode(input_for_cipher_short(), key)}

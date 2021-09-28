@@ -67,7 +67,7 @@ def vigenere_decode(input, key):
 
 # вывод результатов работы программы
 print(f'''
-Шифр Тритемия:
+Шифр Вижинера:
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {vigenere_encode(input_for_cipher_short(), key)}
