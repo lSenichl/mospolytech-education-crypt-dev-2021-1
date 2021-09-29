@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 
 class Rejilla(object):
@@ -56,7 +55,7 @@ class Rejilla(object):
             # print "La longitud del mensaje ahora es: ", len(message)
         while offset < len(message):
             self.huecos.sort()
-            for i in range(self.tamanio*self.tamanio/4):
+            for i in range(int(self.tamanio*self.tamanio//4)):
                 xy = self.huecos[i]
                 x = xy[0]
                 y = xy[1]
@@ -66,7 +65,7 @@ class Rejilla(object):
                 for i in range(self.tamanio):
                     for j in range(self.tamanio):
                         mensajecodificado = mensajecodificado + matriz[i][j]
-            for i in range(self.tamanio*self.tamanio/4):
+            for i in range(self.tamanio*self.tamanio//4):
                 x = (self.tamanio-1)-self.huecos[i][1]
                 y = self.huecos[i][0]
                 self.huecos[i] = x, y
@@ -99,14 +98,14 @@ class Rejilla(object):
         while offset < len(message):
             # 1.-Guardamos el mensaje en la tabla nxn. Da igual empezar por las primeras nxn o por las ultimas
             if (offset % (self.tamanio*self.tamanio)) == 0:
-                for i in reversed(range(self.tamanio)):
-                    for j in reversed(range(self.tamanio)):
+                for i in reversed(list(range(self.tamanio))):
+                    for j in reversed(list(range(self.tamanio))):
                         matriz[i][j] = message[offsetmsg]
                         offsetmsg = offsetmsg - 1
                 # print "TABLA COMPLETA: en proceso de decodificacion", matriz
             # 2.-la giramos al reves (En realidad no giramos una 4x4 o lo que sea. Cogemos solo los huecos y hacemos como que los giramos
             # Somos listos)
-            for i in reversed(range(self.tamanio*self.tamanio/4)):
+            for i in reversed(list(range(self.tamanio*self.tamanio//4))):
                 # print "Antigua coordenada: ", self.huecos[i], " numero: ", i
                 # Las coordenadas de las filas nuevas, son las columnas viejas
                 #Filaueva = Columnavieja
@@ -126,7 +125,7 @@ class Rejilla(object):
             # print "Reversed huecos: ", self.huecos
             # 3.-Cogemos las letras de los huecos
             # Cogemos de la mas abajo a la derecha
-            for i in range(self.tamanio*self.tamanio/4):
+            for i in range(self.tamanio*self.tamanio//4):
                 # (Ahora nuestras duplas molan)
                 xy = self.huecos[i]
                 x = xy[0]
@@ -159,9 +158,11 @@ if __name__ == '__main__':
     gaps = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1),
             (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
     r = Rejilla(8, gaps)
-    texto = 'Вот пример статьи на тысячу символов. Это достаточно маленький текст, оптимально подходящий для карточек товаров в интернет или магазинах или для небольших информационных публикаций. В таком тексте редко бывает более двух или трёх абзацев и обычно один подзаголовок. Но можно и без него. На тысячу символов рекомендовано использовать один или два ключа и одну картину. Текст на тысячу символов это сколько примерно слов. Статистика показывает, что тысяча включает в себя сто пятьдесят или двести слов средней величины. Но, если злоупотреблять предлогами, союзами и другими частями речи на один или два символа, то количество слов неизменно возрастает. В копирайтерской деятельности принято считать тысячи с пробелами или без. Учет пробелов увеличивает объем текста примерно на сто или двести символов именно столько раз мы разделяем слова свободным пространством. Считать пробелы заказчики не любят, так как это пустое место. Однако некоторые фирмы и биржи видят справедливым ставить стоимость за тысячу символов с пробелами, считая последние важным элементом качественного восприятия. Согласитесь, читать слитный текст без единого пропуска, никто не будет. Но большинству нужна цена за тысячу знаков без пробелов.'
-    n = len(texto)
-    out = r.code(texto)
-    print(out)
-    print(texto)
-    print(r.decode(out, n))
+    texto = 'Время, приливы и отливы не ждут человека.'
+    texto2 = 'Here is an example of a thousand characters article.'
+    texto2 = texto.replace(' ', '')
+    n = len(texto2)
+    out = r.code(texto2)
+    print(out.replace(' ', ''))
+    print(texto2)
+    print((r.decode(out, n)))
