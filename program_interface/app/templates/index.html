@@ -1,0 +1,349 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+    .nav-item .active {
+        background-color: #212529 !important;
+    }
+    
+    .nav-link {
+        color: #000;
+    }
+    
+    .nav-link:focus,
+    .nav-link:hover {
+        color: #000;
+    }
+</style>
+<ul class="nav nav-pills pt-5 justify-content-center" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="lab01-tab" data-bs-toggle="tab" data-bs-target="#lab01" type="button" role="tab" aria-controls="lab01" aria-selected="true">
+            Лаб. 1
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab02-tab" data-bs-toggle="tab" data-bs-target="#lab02" type="button" role="tab" aria-controls="lab02" aria-selected="false">
+            Лаб. 2
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab03-tab" data-bs-toggle="tab" data-bs-target="#lab03" type="button" role="tab" aria-controls="lab03" aria-selected="false">
+            Лаб. 3
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab04-tab" data-bs-toggle="tab" data-bs-target="#lab04" type="button" role="tab" aria-controls="lab04" aria-selected="false">
+            Лаб. 4
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab05-tab" data-bs-toggle="tab" data-bs-target="#lab05" type="button" role="tab" aria-controls="lab05" aria-selected="false">
+            Лаб. 5
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab06-tab" data-bs-toggle="tab" data-bs-target="#lab06" type="button" role="tab" aria-controls="lab06" aria-selected="false">
+            Лаб. 6
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab07-tab" data-bs-toggle="tab" data-bs-target="#lab07" type="button" role="tab" aria-controls="lab07" aria-selected="false">
+            Лаб. 7
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab08-tab" data-bs-toggle="tab" data-bs-target="#lab08" type="button" role="tab" aria-controls="lab08" aria-selected="false">
+            Лаб. 8
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab09-tab" data-bs-toggle="tab" data-bs-target="#lab09" type="button" role="tab" aria-controls="lab09" aria-selected="false">
+            Лаб. 9
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab10-tab" data-bs-toggle="tab" data-bs-target="#lab10" type="button" role="tab" aria-controls="lab10" aria-selected="false">
+            Лаб. 10
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lab11-tab" data-bs-toggle="tab" data-bs-target="#lab11" type="button" role="tab" aria-controls="lab11" aria-selected="false">
+            Лаб. 11
+        </button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active m-3" id="lab01" role="tabpanel" aria-labelledby="lab01-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 1. Шифры однозначной замены</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">1. Шифр АТБАШ</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab01.lab01_1') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">2. Шифр Цезаря</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab01.lab01_2') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">3. Квадрат Полибия</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab01.lab01_3') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab02" role="tabpanel" aria-labelledby="lab02-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 2. Шифры многозначной замены</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">4. Шифр Тритемия</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab02.lab02_4') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">5. Шифр Белазо</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab02.lab02_5') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">6. Шифр Виженера</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab02.lab02_6') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">7. S-блок замены ГОСТ Р 34.12-2015 («МАГМА»)</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab03" role="tabpanel" aria-labelledby="lab03-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 3. Шифры блочной замены</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">8. Матричный шифр</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="{{ url_for('lab03.lab03_8') }}" class="btn btn-dark w-100">Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">9. Шифр Плэйфера – шифр биграммной замены</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab04" role="tabpanel" aria-labelledby="lab04-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 4. Шифры перестановки</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">10. Вертикальная перестановка</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">11. Решетка Кардано</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">12. Перестановка в комбинационных шифрах (DES, ГОСТ 28147-89, МАГМА) - сеть Фейстеля
+            </h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab05" role="tabpanel" aria-labelledby="lab05-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 5. Шифры гаммирования</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">13. Одноразовый блокнот К.Шеннона</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">14. Гаммирование ГОСТ 28147-89</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab06" role="tabpanel" aria-labelledby="lab06-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 6. Поточные шифры</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">15. А5/1</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">16. А5/2</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab07" role="tabpanel" aria-labelledby="lab07-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 7. Комбинационные шифры</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">17. МАГМА</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">18. ГОСТ 28147-89</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">19. AES</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">20. КУЗНЕЧИК</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab08" role="tabpanel" aria-labelledby="lab08-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 8. Асимметричные шифры</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">21. RSA</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">22. Elgamal</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">23. ECC – С использованием абсциссы точки</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab09" role="tabpanel" aria-labelledby="lab09-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 9. Генерация цифровой подписи</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">24. RSA</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">25. El Gamal</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab10" role="tabpanel" aria-labelledby="lab10-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 10. Программирование алгоритмов ГОСТ Р 34.10</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">26. ГОСТ Р 34.10-94</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">27. ГОСТ Р 34.10-2012</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade m-3" id="lab11" role="tabpanel" aria-labelledby="lab11-tab">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Лабораторная работа 11. Обмен ключами по алгоритму Diffie–Hellman</h5>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <h5 class="card-header">28. Обмен ключами по Диффи-Хеллману</h5>
+            <div class="card-body">
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="#" class="btn btn-dark w-100 disabled" disabled>Перейти</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="card text-white bg-dark mt-5">
+    <div class="card-body">
+        <h5 class="card-title">6. Шифр Виженера</h5>
+    </div>
+</div>
+<form action="{{ url_for(request.endpoint) }}" method="post">
+    <div class="container pt-3">
+        <div class="row pb-2">
+            <label for="clear" class="form-label fw-bold">Ключ</label>
+            <textarea class="form-control" id="key" name="key" rows="1">{{ key }}</textarea>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="clear" class="form-label fw-bold">Исходный текст</label>
+                <textarea class="form-control" id="clear" name="clear" rows="20">{{ clear_text }}</textarea>
+            </div>
+            <div class="col-4">
+                <label for="encrypted" class="form-label fw-bold">Зашифрованный текст</label>
+                <textarea class="form-control" id="encrypted" name="encrypted" rows="20">{{ encrypted_text }}</textarea>
+            </div>
+            <div class="col-4">
+                <label for="decrypted" class="form-label fw-bold">Расшифрованный текст</label>
+                <textarea class="form-control" id="decrypted" name="decrypted" rows="20">{{ decrypted_text }}</textarea>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-4">
+                <button type="submit" class="btn btn-dark w-100">Зашифровать</button>
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-dark w-100">Расшифровать</button>
+            </div>
+            <div class="col-4">
+                <a href="{{ url_for(request.endpoint) }}" class="btn btn-dark w-100">Очистить</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
