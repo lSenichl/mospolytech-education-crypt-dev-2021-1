@@ -24,8 +24,8 @@ class GostCrypt(object):
     @key.setter
     def key(self, key):
         self._key = key
-        self._subkeys = [(key >> (32 * i)) & 0xFFFFFFFF for i in range(8)] #8 кусков
-
+        self._subkeys = [(key >> (32 * i)) &
+                         0xFFFFFFFF for i in range(8)]
 
     def _f(self, part, key):
         temp = part ^ key
@@ -33,7 +33,6 @@ class GostCrypt(object):
         for i in range(8):
             output |= ((self.sbox[i][(temp >> (4 * i)) & 0b1111]) << (4 * i))
         return ((output >> 11) | (output << (32 - 11))) & 0xFFFFFFFF
-
 
     def _decrypt_round(self, left_part, right_part, round_key):
         return left_part, right_part ^ self._f(left_part, round_key)
@@ -45,9 +44,11 @@ class GostCrypt(object):
         left_part = plain_msg >> 32
         right_part = plain_msg & 0xFFFFFFFF
         for i in range(24):
-            left_part, right_part = _encrypt_round(left_part, right_part, self._subkeys[i % 8])
+            left_part, right_part = _encrypt_round(
+                left_part, right_part, self._subkeys[i % 8])
         for i in range(8):
-            left_part, right_part = _encrypt_round(left_part, right_part, self._subkeys[7 - i])
+            left_part, right_part = _encrypt_round(
+                left_part, right_part, self._subkeys[7 - i])
         return (left_part << 32) | right_part
 
     def decrypt(self, crypted_msg):
@@ -57,13 +58,16 @@ class GostCrypt(object):
         left_part = crypted_msg >> 32
         right_part = crypted_msg & 0xFFFFFFFF
         for i in range(8):
-            left_part, right_part = _decrypt_round(left_part, right_part, self._subkeys[i])
+            left_part, right_part = _decrypt_round(
+                left_part, right_part, self._subkeys[i])
         for i in range(24):
-            left_part, right_part = _decrypt_round(left_part, right_part, self._subkeys[(7 - i) % 8])
+            left_part, right_part = _decrypt_round(
+                left_part, right_part, self._subkeys[(7 - i) % 8])
         return (left_part << 32) | right_part
 
 
-sbox = [numpy.random.permutation(l) for l in itertools.repeat(list(range(16)), 8)]
+sbox = [numpy.random.permutation(l)
+        for l in itertools.repeat(list(range(16)), 8)]
 sbox = (
     (4, 10, 9, 2, 13, 8, 0, 14, 6, 11, 1, 12, 7, 15, 5, 3),
     (14, 11, 4, 12, 6, 13, 15, 10, 2, 3, 8, 1, 0, 7, 5, 9),
@@ -73,7 +77,7 @@ sbox = (
     (4, 11, 10, 0, 7, 2, 1, 13, 3, 6, 8, 5, 9, 12, 15, 14),
     (13, 11, 4, 1, 3, 15, 5, 9, 0, 10, 14, 7, 6, 8, 2, 12),
     (1, 15, 13, 0, 5, 7, 10, 4, 9, 2, 3, 14, 6, 11, 8, 12),
-    )
+)
 
 key = 18318279387912387912789378912379821879387978238793278872378329832982398023031
 
@@ -99,6 +103,7 @@ decode_text_long = bytes.fromhex(hex(decode_text_long)[2::]).decode('utf-8')
 
 print(f'''
 Гост 28147-89:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {encode_text_short}

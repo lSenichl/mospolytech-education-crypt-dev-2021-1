@@ -2,10 +2,8 @@ from base import alphabet, input_for_cipher_short, input_for_cipher_long, output
 import numpy as np
 from egcd import egcd
 
-inp = input('Введите матрицу в строку через пробел: ')
-inp = inp.split(' ')
-
-# 3 10 20 20 19 17 23 78 17
+key1 = '3 10 20 20 19 17 23 78 17'
+inp = key1.split(' ')
 
 key = np.matrix([[int(inp[0]), int(inp[1]), int(inp[2])], [int(inp[3]), int(
     inp[4]), int(inp[5])], [int(inp[6]), int(inp[7]), int(inp[8])]])
@@ -72,9 +70,9 @@ def matrix_decode(cipher, Kinv):
     return decrypted
 
 
-# вывод результатов работы программы
 print(f'''
 Матричный шифр:
+Ключ: {key1}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {matrix_encode(input_for_cipher_short(), key).replace(' ', '')}

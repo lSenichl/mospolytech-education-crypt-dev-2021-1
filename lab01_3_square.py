@@ -1,6 +1,5 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-# квадрат полибия
 hard_dictionary = {"а": "11", "б": "12", "в": "13",
                    "г": "14", "д": "15", "е": "16", "ё": "21",
                    "ж": "22", "з": "23", "и": "24", "й": "25",
@@ -11,7 +10,7 @@ hard_dictionary = {"а": "11", "б": "12", "в": "13",
                    "ъ": "54", "ы": "55", "ь": "56", "э": "61",
                    "ю": "62", "я": "63"}
 
-# функция шифровки
+
 def square_encode(input):
     new_txt = ""
     for x in input:
@@ -21,7 +20,7 @@ def square_encode(input):
             new_txt += (x + x)
     return new_txt
 
-# функция дешифровки
+
 def square_decode(input):
     new_txt = ""
     list_fraze = []
@@ -41,9 +40,9 @@ def square_decode(input):
     return new_txt
 
 
-# вывод результатов работы программы
 print(f'''
 КВАДРАТ ПОЛИБИЯ:
+Ключ: {hard_dictionary}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {square_encode(input_for_cipher_short())}

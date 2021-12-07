@@ -1,22 +1,22 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import random
 
-key = int(input('Введите ключ: '))
+key = 5
 
-# функция шифровки
+
 def caesar_encode(input, step):
     return input.translate(
         str.maketrans(alphabet, alphabet[step:] + alphabet[:step]))
 
-# функция дешифровки
+
 def caesar_decode(input, step):
     return input.translate(
         str.maketrans(alphabet[step:] + alphabet[:step], alphabet))
 
 
-# вывод результатов работы программы
 print(f'''
 ШИФР ЦЕЗАРЯ:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {caesar_encode(input_for_cipher_short(), key)}

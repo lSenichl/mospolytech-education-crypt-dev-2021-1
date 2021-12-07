@@ -1,8 +1,8 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-key = str(input('Введите ключ: '))
+key = 'ключ'
 
-# функция шифровки
+
 def vigenere_encode(input, key):
     enc_string = ''
     string_length = len(input)
@@ -33,7 +33,7 @@ def vigenere_encode(input, key):
             enc_string = enc_string + letter
     return(enc_string)
 
-# функция дешифровки
+
 def vigenere_decode(input, key):
     dec_string = ''
     string_length = len(input)
@@ -65,9 +65,9 @@ def vigenere_decode(input, key):
     return(dec_string)
 
 
-# вывод результатов работы программы
 print(f'''
 Шифр Вижинера:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {vigenere_encode(input_for_cipher_short(), key)}

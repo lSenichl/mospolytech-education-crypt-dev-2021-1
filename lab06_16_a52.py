@@ -1,15 +1,19 @@
 # -*- coding:utf-8 -*-
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
-import re
+import sys
 import copy
+import re
+
 reg_x_length = 19
 reg_y_length = 22
 reg_z_length = 23
+reg_e_length = 17
 
 key_one = ""
 reg_x = []
 reg_y = []
 reg_z = []
+reg_e = []
 
 
 def loading_registers(key):
@@ -29,6 +33,10 @@ def loading_registers(key):
         reg_z.insert(r, int(key[k]))
         k = k + 1
         r = r + 1
+    i = 0
+    while(i < reg_e_length):
+        reg_e.insert(i, int(key[i]))
+        i = i + 1
 
 
 def set_key(key):
@@ -72,11 +80,12 @@ def get_keystream(length):
     reg_x_temp = copy.deepcopy(reg_x)
     reg_y_temp = copy.deepcopy(reg_y)
     reg_z_temp = copy.deepcopy(reg_z)
+    reg_e_temp = copy.deepcopy(reg_e)
     keystream = []
     i = 0
     while i < length:
-        majority = get_majority(reg_x_temp[8], reg_y_temp[10], reg_z_temp[10])
-        if reg_x_temp[8] == majority:
+        majority = get_majority(reg_e_temp[3], reg_e_temp[7], reg_e_temp[10])
+        if get_majority(reg_x_temp[12], reg_x_temp[14], reg_x_temp[15]) == majority:
             new = reg_x_temp[13] ^ reg_x_temp[16] ^ reg_x_temp[17] ^ reg_x_temp[18]
             reg_x_temp_two = copy.deepcopy(reg_x_temp)
             j = 1
@@ -85,7 +94,7 @@ def get_keystream(length):
                 j = j + 1
             reg_x_temp[0] = new
 
-        if reg_y_temp[10] == majority:
+        if get_majority(reg_y_temp[9], reg_y_temp[13], reg_y_temp[16]) == majority:
             new_one = reg_y_temp[20] ^ reg_y_temp[21]
             reg_y_temp_two = copy.deepcopy(reg_y_temp)
             k = 1
@@ -94,7 +103,7 @@ def get_keystream(length):
                 k = k + 1
             reg_y_temp[0] = new_one
 
-        if reg_z_temp[10] == majority:
+        if get_majority(reg_z_temp[13], reg_z_temp[16], reg_z_temp[18]) == majority:
             new_two = reg_z_temp[7] ^ reg_z_temp[20] ^ reg_z_temp[21] ^ reg_z_temp[22]
             reg_z_temp_two = copy.deepcopy(reg_z_temp)
             m = 1
@@ -158,7 +167,7 @@ set_key(key)
 
 
 print(f'''
-A5/1:
+A5/2:
 Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:

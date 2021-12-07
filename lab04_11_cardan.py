@@ -1,5 +1,6 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+
 class Cardan(object):
     def __init__(self, size, spaces):
         self.size = int(size)
@@ -51,7 +52,6 @@ class Cardan(object):
                 self.spaces[i] = x, y
         return cipher_text
 
-
     def decode(self, message, size):
         uncipher_text = ""
         offset = 0
@@ -87,7 +87,8 @@ class Cardan(object):
         return uncipher_text
 
 
-gaps = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1), (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
+gaps = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1),
+        (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
 r = Cardan(8, gaps)
 
 texto = input_for_cipher_short()
@@ -96,7 +97,8 @@ n = len(texto)
 encoded = r.code(texto)
 decoded = r.decode(encoded, n)
 
-gaps2 = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1), (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
+gaps2 = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1),
+         (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
 r2 = Cardan(8, gaps)
 
 texto_long = input_for_cipher_long()
@@ -107,6 +109,7 @@ decoded_long = r2.decode(encoded_long, n)
 
 print(f'''
 Решетка Кардано:
+Ключ: {gaps}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {encoded.replace(' ', '')}

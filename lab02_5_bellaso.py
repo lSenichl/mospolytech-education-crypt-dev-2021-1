@@ -1,8 +1,8 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-key = str(input('Введите ключ: '))
+key = 'ключ'
 
-# функция шифровки
+
 def bellaso_decode(input, key):
     decrypted = ''
     offset = 0
@@ -19,7 +19,7 @@ def bellaso_decode(input, key):
         decrypted += output
     return decrypted
 
-# функция дешифровки
+
 def bellaso_encode(input, key):
     encoded = ''
     offset = 0
@@ -37,9 +37,9 @@ def bellaso_encode(input, key):
     return encoded
 
 
-# вывод результатов работы программы
 print(f'''
 Шифр Белазо:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {bellaso_encode(input_for_cipher_short(), key)}

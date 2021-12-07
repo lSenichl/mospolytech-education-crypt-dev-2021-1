@@ -1,7 +1,8 @@
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import math
 
-key = str(input('Введите ключ: '))
+key = 'ключ'
+
 
 def transposition_encode(msg, key):
     cipher = ""
@@ -65,9 +66,10 @@ def transposition_decode(cipher, key):
 
     return msg.replace('_', '')
 
-# вывод результатов работы программы
+
 print(f'''
 Шифр вертикальной перестановки:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {transposition_encode(input_for_cipher_short(), key)}
@@ -84,4 +86,3 @@ print(f'''
 {output_from_decrypted(transposition_decode(transposition_encode(
     input_for_cipher_long(), key), key))}
 ''')
-

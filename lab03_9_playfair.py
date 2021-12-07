@@ -2,7 +2,7 @@ from base import alphabet, input_for_cipher_short, input_for_cipher_long, output
 
 alphabet = alphabet.replace(' ', '') + 'abc'
 
-key = str(input('Введите ключ: '))
+key = 'ключ'
 
 
 def playfair_encode(clearText, key):
@@ -123,9 +123,9 @@ def playfair_decode(clearText, key):
     return enc_text
 
 
-# вывод результатов работы программы
 print(f'''
 Шифр Плейфера:
+Ключ: {key}
 КОРОТКИЙ ТЕКСТ:
 Зашифрованный текст:
 {playfair_encode(input_for_cipher_short(), key)}
