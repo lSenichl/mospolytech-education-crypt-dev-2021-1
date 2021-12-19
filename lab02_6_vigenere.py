@@ -65,22 +65,28 @@ def vigenere_decode(input, key):
     return(dec_string)
 
 
-print(f'''
-Шифр Вижинера:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{vigenere_encode(input_for_cipher_short(), key)}
+def main():
+    print(f'''
+    Шифр Вижинера:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {vigenere_encode(input_for_cipher_short(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(vigenere_decode(vigenere_encode(
+        input_for_cipher_short(), key), key))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {vigenere_encode(input_for_cipher_long(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(vigenere_decode(vigenere_encode(
+        input_for_cipher_long(), key), key))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(vigenere_decode(vigenere_encode(
-    input_for_cipher_short(), key), key))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{vigenere_encode(input_for_cipher_long(), key)}
 
-Расшифрованный текст:
-{output_from_decrypted(vigenere_decode(vigenere_encode(
-    input_for_cipher_long(), key), key))}
-''')

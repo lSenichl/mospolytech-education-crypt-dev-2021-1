@@ -99,8 +99,15 @@ def egcipher(clearText):
     else:
         print("Подпись неверна")
 
-print('ЭЦП Elgamal:')
-print('КОРОТКИЙ ТЕКСТ:')
-egcipher(input_for_cipher_short())
-print('ДЛИННЫЙ ТЕКСТ:')
-egcipher(input_for_cipher_long())
+
+def main():
+    print('ЭЦП Elgamal:')
+    print('КОРОТКИЙ ТЕКСТ:')
+    egcipher(input_for_cipher_short())
+    print('ДЛИННЫЙ ТЕКСТ:')
+    egcipher(input_for_cipher_long())
+
+if __name__ == "__main__":
+    main()
+    
+

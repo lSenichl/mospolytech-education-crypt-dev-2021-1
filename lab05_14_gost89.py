@@ -101,20 +101,26 @@ decode_text_long = gost_long.decrypt(encode_text_long)
 decode_text_long = bytes.fromhex(hex(decode_text_long)[2::]).decode('utf-8')
 
 
-print(f'''
-Гост 28147-89:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{encode_text_short}
+def main():
+    print(f'''
+    Гост 28147-89:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encode_text_short}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decode_text_short)}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encode_text_long}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decode_text_long)}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(decode_text_short)}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{encode_text_long}
 
-Расшифрованный текст:
-{output_from_decrypted(decode_text_long)}
-''')

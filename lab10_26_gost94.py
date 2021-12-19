@@ -79,8 +79,15 @@ def hash_value(n, alpha_code):
         i += 1
     return hash
 
-print('ГОСТ Р 34.10-94:')
-print('КОРОТКИЙ ТЕКСТ:')
-ciphergostd(input_for_cipher_short())
-print('ДЛИННЫЙ ТЕКСТ:')
-ciphergostd(input_for_cipher_long())
+def main():
+    print('ГОСТ Р 34.10-94:')
+    print('КОРОТКИЙ ТЕКСТ:')
+    ciphergostd(input_for_cipher_short())
+    print('ДЛИННЫЙ ТЕКСТ:')
+    ciphergostd(input_for_cipher_long())
+
+if __name__ == "__main__":
+    main()
+
+    
+

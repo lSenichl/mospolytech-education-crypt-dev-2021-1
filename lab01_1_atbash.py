@@ -6,19 +6,25 @@ def atbash(input):
         alphabet + alphabet.upper(), alphabet[::-1] + alphabet.upper()[::-1]))
 
 
-print(f'''
-ШИФР АТБАШ:
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{atbash(input_for_cipher_short())}
+def main():
+    print(f'''
+    ШИФР АТБАШ:
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {atbash(input_for_cipher_short())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(atbash(atbash(input_for_cipher_short())))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {atbash(input_for_cipher_long())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(atbash(atbash(input_for_cipher_long())))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(atbash(atbash(input_for_cipher_short())))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{atbash(input_for_cipher_long())}
 
-Расшифрованный текст:
-{output_from_decrypted(atbash(atbash(input_for_cipher_long())))}
-''')

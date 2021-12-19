@@ -1,0 +1,16 @@
+{
+    "scriptname": "",
+    "mddocfile": "",
+    "creationdate": "12/19/2021",
+    "author": "lsenichl",
+    "license": "GPL v3",
+    "copyright": "Copyright (c) lsenichl, 2021",
+    "version": "0.0.1",
+    "email": "lsenichl@lsenichl",
+    "description": "",
+    "encoding": "",
+    "importdirs": [
+        "/home/lsenichl/codimension/mospolytech-education-crypt-dev-2021-1"
+    ],
+    "uuid": "c469fb4a-60ba-11ec-8852-ccf9e4f33950"
+}

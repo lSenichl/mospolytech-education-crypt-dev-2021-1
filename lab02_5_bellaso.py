@@ -37,22 +37,28 @@ def bellaso_encode(input, key):
     return encoded
 
 
-print(f'''
-Шифр Белазо:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{bellaso_encode(input_for_cipher_short(), key)}
+def main():
+    print(f'''
+    Шифр Белазо:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {bellaso_encode(input_for_cipher_short(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(bellaso_decode(bellaso_encode(
+        input_for_cipher_short(), key), key))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {bellaso_encode(input_for_cipher_long(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(bellaso_decode(bellaso_encode(
+        input_for_cipher_long(), key), key))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(bellaso_decode(bellaso_encode(
-    input_for_cipher_short(), key), key))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{bellaso_encode(input_for_cipher_long(), key)}
 
-Расшифрованный текст:
-{output_from_decrypted(bellaso_decode(bellaso_encode(
-    input_for_cipher_long(), key), key))}
-''')

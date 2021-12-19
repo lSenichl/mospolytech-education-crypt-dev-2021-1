@@ -70,22 +70,28 @@ def matrix_decode(cipher, Kinv):
     return decrypted
 
 
-print(f'''
-Матричный шифр:
-Ключ: {key1}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{matrix_encode(input_for_cipher_short(), key).replace(' ', '')}
+def main():
+    print(f'''
+    Матричный шифр:
+    Ключ: {key1}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {matrix_encode(input_for_cipher_short(), key).replace(' ', '')}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(matrix_decode(matrix_encode(
+        input_for_cipher_short(), key), matrix_mod_inv(key, len(alphabet)))).replace(' ', '')}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {matrix_encode(input_for_cipher_long(), key).replace(' ', '')}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(matrix_decode(matrix_encode(
+        input_for_cipher_long(), key), matrix_mod_inv(key, len(alphabet)))).replace(' ', '')}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(matrix_decode(matrix_encode(
-    input_for_cipher_short(), key), matrix_mod_inv(key, len(alphabet)))).replace(' ', '')}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{matrix_encode(input_for_cipher_long(), key).replace(' ', '')}
 
-Расшифрованный текст:
-{output_from_decrypted(matrix_decode(matrix_encode(
-    input_for_cipher_long(), key), matrix_mod_inv(key, len(alphabet)))).replace(' ', '')}
-''')

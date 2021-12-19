@@ -14,22 +14,28 @@ def caesar_decode(input, step):
         str.maketrans(alphabet[step:] + alphabet[:step], alphabet))
 
 
-print(f'''
-ШИФР ЦЕЗАРЯ:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{caesar_encode(input_for_cipher_short(), key)}
+def main():
+    print(f'''
+    ШИФР ЦЕЗАРЯ:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {caesar_encode(input_for_cipher_short(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(caesar_decode(caesar_encode(
+        input_for_cipher_short(), key), key))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {caesar_encode(input_for_cipher_long(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(caesar_decode(caesar_encode(
+        input_for_cipher_long(), key), key))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_short(), key), key))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{caesar_encode(input_for_cipher_long(), key)}
 
-Расшифрованный текст:
-{output_from_decrypted(caesar_decode(caesar_encode(
-    input_for_cipher_long(), key), key))}
-''')

@@ -72,23 +72,30 @@ encrypted_long = encrypt(private, message_long)
 print_enc_long = ''.join([str(x) for x in encrypted_long])
 decrypted_long = decrypt(public, encrypted_long)
 
-print(f'''
-RSA:
-Ключ: 
-p={p} q={q}
-Публичный: {public}
-Приватный: {private}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{print_enc_short}
 
-Расшифрованный текст:
-{output_from_decrypted(decrypted_short)}
+def main():
+    print(f'''
+    RSA:
+    Ключ: 
+    p={p} q={q}
+    Публичный: {public}
+    Приватный: {private}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {print_enc_short}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decrypted_short)}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {print_enc_long}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decrypted_long)}
+    ''')
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{print_enc_long}
+if __name__ == "__main__":
+    main()
+    
 
-Расшифрованный текст:
-{output_from_decrypted(decrypted_long)}
-''')

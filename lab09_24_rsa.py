@@ -83,8 +83,14 @@ def rsacipher(p, q, clearText):
     print("Значение проверки хэша = {}\n".format(check_sign))
 
 
-print('ЭЦП RSA:')
-print('КОРОТКИЙ ТЕКСТ:')
-rsacipher('31', '7', input_for_cipher_short())
-print('ДЛИННЫЙ ТЕКСТ:')
-rsacipher('31', '7', input_for_cipher_long())
+def main():
+    print('ЭЦП RSA:')
+    print('КОРОТКИЙ ТЕКСТ:')
+    rsacipher('31', '7', input_for_cipher_short())
+    print('ДЛИННЫЙ ТЕКСТ:')
+    rsacipher('31', '7', input_for_cipher_long())
+
+if __name__ == "__main__":
+    main()
+
+

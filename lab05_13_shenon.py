@@ -53,23 +53,29 @@ short_decoded = shenon_decode(short_encoded[0], short_encoded[1])
 long_encoded = shenon_encode(input_for_cipher_long())
 long_decoded = shenon_decode(long_encoded[0], long_encoded[1])
 
-print(f'''
-Одноразовый блокнот:
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{short_encoded[0]}
-Ключ:
-{short_encoded[1]}
 
-Расшифрованный текст:
-{output_from_decrypted(short_decoded)}
+def main():
+    print(f'''
+    Одноразовый блокнот:
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {short_encoded[0]}
+    Ключ:
+    {short_encoded[1]}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(short_decoded)}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {long_encoded[0]}
+    Ключ:
+    {long_encoded[1]}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(long_decoded)}
+    ''')
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{long_encoded[0]}
-Ключ:
-{long_encoded[1]}
+if __name__ == "__main__":
+    main()
 
-Расшифрованный текст:
-{output_from_decrypted(long_decoded)}
-''')

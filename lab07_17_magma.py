@@ -105,22 +105,29 @@ for i in encr_long:
     dt = magma_decrypt(i, key)
     decr_long.append(bytes.fromhex(hex(dt)[2::]).decode('utf-8'))
 
-print(f'''
-МАГМА:
-КЛЮЧ:
-{key}
 
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{encr_short}
+def main():
+    print(f'''
+    МАГМА:
+    КЛЮЧ:
+    {key}
+    
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encr_short}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(''.join(decr_short))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encr_long}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(''.join(decr_long))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(''.join(decr_short))}
+if __name__ == "__main__":
+    main()
+    
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{encr_long}
-
-Расшифрованный текст:
-{output_from_decrypted(''.join(decr_long))}
-''')

@@ -166,22 +166,28 @@ key = '0101001000011010110001110001100100101001000000110111111010110111'
 set_key(key)
 
 
-print(f'''
-A5/2:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{encrypt(input_for_cipher_short())}
+def main():
+    print(f'''
+    A5/2:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encrypt(input_for_cipher_short())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decrypt(encrypt(
+        input_for_cipher_short())))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encrypt(input_for_cipher_long())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decrypt(encrypt(
+        input_for_cipher_long())))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(decrypt(encrypt(
-    input_for_cipher_short())))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{encrypt(input_for_cipher_long())}
 
-Расшифрованный текст:
-{output_from_decrypted(decrypt(encrypt(
-    input_for_cipher_long())))}
-''')

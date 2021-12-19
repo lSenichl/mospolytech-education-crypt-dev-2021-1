@@ -40,22 +40,28 @@ def square_decode(input):
     return new_txt
 
 
-print(f'''
-КВАДРАТ ПОЛИБИЯ:
-Ключ: {hard_dictionary}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{square_encode(input_for_cipher_short())}
+def main():
+    print(f'''
+    КВАДРАТ ПОЛИБИЯ:
+    Ключ: {hard_dictionary}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {square_encode(input_for_cipher_short())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(square_decode(square_encode(
+        input_for_cipher_short())))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {square_encode(input_for_cipher_long())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(square_decode(square_encode(
+        input_for_cipher_long())))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(square_decode(square_encode(
-    input_for_cipher_short())))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{square_encode(input_for_cipher_long())}
 
-Расшифрованный текст:
-{output_from_decrypted(square_decode(square_encode(
-    input_for_cipher_long())))}
-''')

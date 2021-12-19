@@ -21,21 +21,27 @@ def trithemius_encode(input):
     return encode
 
 
-print(f'''
-Шифр Тритемия:
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{trithemius_encode(input_for_cipher_short())}
+def main():
+    print(f'''
+    Шифр Тритемия:
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {trithemius_encode(input_for_cipher_short())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(trithemius_decode(trithemius_encode(
+        input_for_cipher_short())))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {trithemius_encode(input_for_cipher_long())}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(trithemius_decode(trithemius_encode(
+        input_for_cipher_long())))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(trithemius_decode(trithemius_encode(
-    input_for_cipher_short())))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{trithemius_encode(input_for_cipher_long())}
 
-Расшифрованный текст:
-{output_from_decrypted(trithemius_decode(trithemius_encode(
-    input_for_cipher_long())))}
-''')

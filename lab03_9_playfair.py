@@ -123,22 +123,28 @@ def playfair_decode(clearText, key):
     return enc_text
 
 
-print(f'''
-Шифр Плейфера:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{playfair_encode(input_for_cipher_short(), key)}
+def main():
+    print(f'''
+    Шифр Плейфера:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {playfair_encode(input_for_cipher_short(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(playfair_decode(playfair_encode(
+        input_for_cipher_short(), key), key))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {playfair_encode(input_for_cipher_long(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(playfair_decode(playfair_encode(
+        input_for_cipher_long(), key), key))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(playfair_decode(playfair_encode(
-    input_for_cipher_short(), key), key))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{playfair_encode(input_for_cipher_long(), key)}
 
-Расшифрованный текст:
-{output_from_decrypted(playfair_decode(playfair_encode(
-    input_for_cipher_long(), key), key))}
-''')

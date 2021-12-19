@@ -67,22 +67,28 @@ def transposition_decode(cipher, key):
     return msg.replace('_', '')
 
 
-print(f'''
-Шифр вертикальной перестановки:
-Ключ: {key}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{transposition_encode(input_for_cipher_short(), key)}
+def main():
+    print(f'''
+    Шифр вертикальной перестановки:
+    Ключ: {key}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {transposition_encode(input_for_cipher_short(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(transposition_decode(transposition_encode(
+        input_for_cipher_short(), key), key))}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {transposition_encode(input_for_cipher_long(), key)}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(transposition_decode(transposition_encode(
+        input_for_cipher_long(), key), key))}
+    ''')
 
-Расшифрованный текст:
-{output_from_decrypted(transposition_decode(transposition_encode(
-    input_for_cipher_short(), key), key))}
+if __name__ == "__main__":
+    main()
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{transposition_encode(input_for_cipher_long(), key)}
 
-Расшифрованный текст:
-{output_from_decrypted(transposition_decode(transposition_encode(
-    input_for_cipher_long(), key), key))}
-''')

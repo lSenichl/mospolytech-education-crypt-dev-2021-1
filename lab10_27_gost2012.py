@@ -189,8 +189,15 @@ def scalar_mult(k, point):
         k >>= 1
     return result
 
-print('ГОСТ Р 34.10-2012:')
-print('КОРОТКИЙ ТЕКСТ:')
-ciphergosto(input_for_cipher_short())
-print('ДЛИННЫЙ ТЕКСТ:')
-ciphergosto(input_for_cipher_long())
+
+def main():
+    print('ГОСТ Р 34.10-2012:')
+    print('КОРОТКИЙ ТЕКСТ:')
+    ciphergosto(input_for_cipher_short())
+    print('ДЛИННЫЙ ТЕКСТ:')
+    ciphergosto(input_for_cipher_long())
+
+if __name__ == "__main__":
+    main()
+    
+

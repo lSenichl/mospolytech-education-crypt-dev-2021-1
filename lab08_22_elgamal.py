@@ -66,21 +66,29 @@ ct_ln, pp_ln = encryption(msg_long, p, y, x)
 pt_ln = decryption(ct_ln, pp_ln, g, p)
 d_msg_ln = ''.join(pt_ln)
 
-print(f'''
-Elgamal:
-Ключ: 
-p={p} x={x} g={g} y={y}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{ct_sh}
 
-Расшифрованный текст:
-{output_from_decrypted(d_msg_sh)}
+def main():
+    print(f'''
+    Elgamal:
+    Ключ: 
+    p={p} x={x} g={g} y={y}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {ct_sh}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(d_msg_sh)}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {ct_ln}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(d_msg_ln)}
+    ''')
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{ct_ln}
+if __name__ == "__main__":
+    main()
 
-Расшифрованный текст:
-{output_from_decrypted(d_msg_ln)}
-''')
+    
+

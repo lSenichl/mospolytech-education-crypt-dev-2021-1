@@ -107,20 +107,27 @@ n = len(texto_long)
 encoded_long = r2.code(texto_long)
 decoded_long = r2.decode(encoded_long, n)
 
-print(f'''
-Решетка Кардано:
-Ключ: {gaps}
-КОРОТКИЙ ТЕКСТ:
-Зашифрованный текст:
-{encoded.replace(' ', '')}
 
-Расшифрованный текст:
-{output_from_decrypted(decoded)}
+def main():
+    print(f'''
+    Решетка Кардано:
+    Ключ: {gaps}
+    КОРОТКИЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encoded.replace(' ', '')}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decoded)}
+    
+    ДЛИННЫЙ ТЕКСТ:
+    Зашифрованный текст:
+    {encoded_long}
+    
+    Расшифрованный текст:
+    {output_from_decrypted(decoded_long)}
+    ''')
 
-ДЛИННЫЙ ТЕКСТ:
-Зашифрованный текст:
-{encoded_long}
+if __name__ == "__main__":
+    main()
+    
 
-Расшифрованный текст:
-{output_from_decrypted(decoded_long)}
-''')
