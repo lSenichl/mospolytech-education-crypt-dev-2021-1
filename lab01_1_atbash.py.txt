@@ -1,0 +1,11 @@
+op2=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+st5=>start: start atbash
+io7=>inputoutput: input: input
+io13=>inputoutput: output:  input.translate(str.maketrans((alphabet + alphabet.upper()), (alphabet[::(- 1)] + alphabet.upper()[::(- 1)])))
+e11=>end: end function return
+
+op2->st5
+st5->io7
+io7->io13
+io13->e11
+

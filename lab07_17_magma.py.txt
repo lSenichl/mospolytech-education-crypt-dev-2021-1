@@ -1,0 +1,42 @@
+op2=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+op4=>operation: pi0 = [12, 4, 6, 2, 10, 5, 11, 9, 14, 8, 13, 7, 0, 3, 15, 1]
+op6=>operation: pi1 = [6, 8, 2, 3, 9, 10, 5, 12, 1, 14, 4, 7, 11, 13, 0, 15]
+op8=>operation: pi2 = [11, 3, 5, 8, 2, 15, 10, 13, 14, 1, 7, 4, 12, 9, 6, 0]
+op10=>operation: pi3 = [12, 8, 2, 1, 13, 4, 15, 6, 7, 0, 10, 5, 3, 14, 9, 11]
+op12=>operation: pi4 = [7, 15, 5, 10, 8, 1, 6, 13, 0, 9, 3, 14, 11, 4, 2, 12]
+op14=>operation: pi5 = [5, 13, 15, 6, 9, 2, 12, 10, 11, 7, 8, 1, 4, 3, 14, 0]
+op16=>operation: pi6 = [8, 14, 2, 5, 6, 9, 1, 12, 15, 4, 11, 0, 13, 10, 3, 7]
+op18=>operation: pi7 = [1, 7, 14, 13, 0, 5, 8, 3, 4, 15, 10, 6, 9, 12, 11, 2]
+op20=>operation: pi = [pi0, pi1, pi2, pi3, pi4, pi5, pi6, pi7]
+op22=>operation: MASK32 = ((2 ** 32) - 1)
+st25=>start: start t
+io27=>inputoutput: input: x
+op30=>operation: y = 0
+cond33=>condition: for i in reversed(range(8))
+op44=>operation: j = ((x >> (4 * i)) & 15)
+op46=>operation: y <<= 4
+op48=>operation: y ^= pi[i][j]
+io55=>inputoutput: output:  y
+e53=>end: end function return
+
+op2->op4
+op4->op6
+op6->op8
+op8->op10
+op10->op12
+op12->op14
+op14->op16
+op16->op18
+op18->op20
+op20->op22
+op22->st25
+st25->io27
+io27->op30
+op30->cond33
+cond33(yes)->op44
+op44->op46
+op46->op48
+op48(left)->cond33
+cond33(no)->io55
+io55->e53
+

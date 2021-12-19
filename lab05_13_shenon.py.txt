@@ -1,0 +1,64 @@
+op2=>operation: import random
+op4=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+op6=>operation: alphabet = alphabet.replace(' ', '')
+op8=>operation: alphabet_lower = {}
+op10=>operation: i = 0
+cond13=>condition: while (i < len(alphabet))
+sub22=>subroutine: alphabet_lower.update({alphabet[i]: i})
+op24=>operation: i += 1
+st29=>start: start get_key
+io31=>inputoutput: input: d, value
+cond35=>condition: for (k, v) in d.items()
+cond55=>condition: if (v == value)
+io62=>inputoutput: output:  k
+e60=>end: end function return
+e70=>end: end get_key
+st74=>start: start shenon_encode
+io76=>inputoutput: input: msg
+op79=>operation: msg_list = list(msg)
+op81=>operation: msg_list_len = len(msg_list)
+op83=>operation: msg_code_bin_list = list()
+cond86=>operation: msg_code_bin_list.append(alphabet_lower.get(msg_list[i])) while  i in range(len(msg_list))
+op98=>operation: key_list = list()
+cond101=>operation: key_list.append(random.randint(0, 32)) while  i in range(msg_list_len)
+op113=>operation: cipher_list = list()
+cond116=>condition: for i in range(msg_list_len)
+op127=>operation: m = int(msg_code_bin_list[i])
+op129=>operation: k = int(key_list[i])
+sub131=>subroutine: cipher_list.append(int(bin((m ^ k)), base=2))
+io138=>inputoutput: output:  (cipher_list, key_list)
+e136=>end: end function return
+
+op2->op4
+op4->op6
+op6->op8
+op8->op10
+op10->cond13
+cond13(yes)->sub22
+sub22->op24
+op24(left)->cond13
+cond13(no)->st29
+st29->io31
+io31->cond35
+cond35(yes)->cond55
+cond55(yes)->io62
+io62->e60
+cond55(no)->cond35
+cond35(no)->e70
+e70->st74
+st74->io76
+io76->op79
+op79->op81
+op81->op83
+op83->cond86
+cond86->op98
+op98->cond101
+cond101->op113
+op113->cond116
+cond116(yes)->op127
+op127->op129
+op129->sub131
+sub131(left)->cond116
+cond116(no)->io138
+io138->e136
+

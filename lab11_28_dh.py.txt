@@ -1,0 +1,25 @@
+st3=>start: start main
+io5=>inputoutput: input: 
+op8=>operation: a = int(input('Введите число а: '))
+op10=>operation: n = int(input('Введите число n, n должно быть больше a: '))
+op12=>operation: ka = int(input('Введите число ka: '))
+op14=>operation: Ya = ((a ** ka) % n)
+sub16=>subroutine: print('Ваш Ya = ', Ya)
+op18=>operation: Yb = int(input('Введите число Yb, которое прислал собеседник: '))
+op20=>operation: K = ((a ** (Ya * Yb)) % n)
+sub22=>subroutine: print('Ваш общий ключ: ', K)
+e24=>end: end main
+cond28=>operation: main() if  (__name__ == '__main__')
+
+st3->io5
+io5->op8
+op8->op10
+op10->op12
+op12->op14
+op14->sub16
+sub16->op18
+op18->op20
+op20->sub22
+sub22->e24
+e24->cond28
+

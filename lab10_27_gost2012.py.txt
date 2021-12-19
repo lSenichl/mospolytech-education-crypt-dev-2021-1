@@ -1,0 +1,126 @@
+op2=>operation: import random
+op4=>operation: import collections
+op6=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+op8=>operation: alphabet_lower = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4, 'е': 5, 'ё': 6, 'ж': 7, 'з': 8, 'и': 9, 'й': 10, 'к': 11, 'л': 12, 'м': 13, 'н': 14, 'о': 15, 'п': 16, 'р': 17, 'с': 18, 'т': 19, 'у': 20, 'ф': 21, 'х': 22, 'ц': 23, 'ч': 24, 'ш': 25, 'щ': 26, 'ъ': 27, 'ы': 28, 'ь': 29, 'э': 30, 'ю': 31, 'я': 32}
+op10=>operation: class Point():
+
+    def __init__(self, x_init, y_init):
+        self.x = x_init
+        self.y = y_init
+
+    def shift(self, x, y):
+        self.x += x
+        self.y += y
+
+    def __repr__(self):
+        return ''.join(['( x=', str(self.x), ', y=', str(self.y), ')'])
+op12=>operation: x_1 = 0
+op14=>operation: y_1 = 0
+op16=>operation: EllipticCurve = collections.namedtuple('EllipticCurve', 'name p q_mod a b q g n h')
+op18=>operation: curve = EllipticCurve('secp256k1', p=115792089237316195423570985008687907853269984665640564039457584007908834671663, q_mod=115792089237210883131902140479076077470404524942491262870694982560773809634351, a=7, b=11, g=(55066263022277343669578718895168534326250603453777594175500187360389116729240, 32670510020758816978083085130507043184471273380659243275938904335757337482424), q=(72488970228380509287422715226575535698893157273063074627791787432852706183111, 62070622898698443831883535403436258712770888294397026493185421712108624767191), n=115792089237316195423570985008687907852837564279074904382605163141518161494337, h=1)
+st21=>start: start ciphergosto
+io23=>inputoutput: input: clearText
+op26=>operation: msg = clearText
+op28=>operation: msg_list = list(msg)
+op30=>operation: alpha_code_msg = list()
+cond33=>operation: alpha_code_msg.append(int(alphabet_lower.get(msg_list[i]))) while  i in range(len(msg_list))
+sub45=>subroutine: print('Длина исходного сообщения {} символов'.format(len(alpha_code_msg)))
+sub47=>subroutine: print('Q mod', int(curve.q_mod))
+sub49=>subroutine: print('P mod', int(curve.p))
+op51=>operation: hash_code_msg = hash_value(curve.p, alpha_code_msg)
+sub53=>subroutine: print('Хэш сообщения:={}'.format(hash_code_msg))
+op55=>operation: e = (hash_code_msg % curve.q_mod)
+sub57=>subroutine: print('E={}'.format(e))
+op59=>operation: k = random.randint(1, curve.q_mod)
+sub61=>subroutine: print('K={}'.format(k))
+op63=>operation: d = 10
+sub65=>subroutine: print('D={}'.format(d))
+op67=>operation: (x, y) = scalar_mult(k, curve.g)
+op69=>operation: point_c = Point(x, y)
+sub71=>subroutine: print('Point_C={}'.format(point_c))
+op73=>operation: r = (point_c.x % curve.q_mod)
+sub75=>subroutine: print('R={}'.format(r))
+op77=>operation: s = (((r * curve.p) + (k * e)) % curve.q_mod)
+sub79=>subroutine: print('S={}'.format(s))
+op81=>operation: v = inverse_mod(e, curve.p)
+sub83=>subroutine: print('V={}'.format(v))
+op85=>operation: z1 = ((s * v) % curve.q_mod)
+op87=>operation: z2 = (((curve.p - r) * v) % curve.q_mod)
+op89=>operation: (x_1, y_1) = scalar_mult(d, curve.g)
+sub91=>subroutine: print('Point_Q=( x={}, y={} )'.format(x_1, y_1))
+op93=>operation: point_c_new = Point(x, y)
+op95=>operation: (x, y) = point_add(scalar_mult(z1, curve.g), scalar_mult(z2, curve.q))
+op97=>operation: r_1 = (point_c_new.x % curve.q_mod)
+sub99=>subroutine: print('R_new={}'.format(r_1))
+cond102=>condition: if (r == r_1)
+sub106=>subroutine: print('Подпись прошла проверку!\n')
+e113=>end: end ciphergosto
+st117=>start: start hash_value
+io119=>inputoutput: input: mod, alpha_code_msg
+op122=>operation: i = 0
+op124=>operation: hashing_value = 1
+cond127=>condition: while (i < len(alpha_code_msg))
+op136=>operation: hashing_value = ((((hashing_value - 1) + int(alpha_code_msg[i])) ** 2) % curve.p)
+op138=>operation: i += 1
+io145=>inputoutput: output:  hashing_value
+e143=>end: end function return
+sub110=>subroutine: print('Ошибка проверки!')
+
+op2->op4
+op4->op6
+op6->op8
+op8->op10
+op10->op12
+op12->op14
+op14->op16
+op16->op18
+op18->st21
+st21->io23
+io23->op26
+op26->op28
+op28->op30
+op30->cond33
+cond33->sub45
+sub45->sub47
+sub47->sub49
+sub49->op51
+op51->sub53
+sub53->op55
+op55->sub57
+sub57->op59
+op59->sub61
+sub61->op63
+op63->sub65
+sub65->op67
+op67->op69
+op69->sub71
+sub71->op73
+op73->sub75
+sub75->op77
+op77->sub79
+sub79->op81
+op81->sub83
+sub83->op85
+op85->op87
+op87->op89
+op89->sub91
+sub91->op93
+op93->op95
+op95->op97
+op97->sub99
+sub99->cond102
+cond102(yes)->sub106
+sub106->e113
+e113->st117
+st117->io119
+io119->op122
+op122->op124
+op124->cond127
+cond127(yes)->op136
+op136->op138
+op138(left)->cond127
+cond127(no)->io145
+io145->e143
+cond102(no)->sub110
+sub110->e113
+

@@ -1,0 +1,108 @@
+op2=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+op4=>operation: alphabet = (alphabet.replace(' ', '') + 'abc')
+op6=>operation: key = 'ключ'
+st9=>start: start playfair_encode
+io11=>inputoutput: input: clearText, key
+op14=>operation: text = clearText
+op16=>operation: new_alphabet = []
+cond19=>operation: new_alphabet.append(key[i]) while  i in range(len(key))
+cond32=>condition: for i in range(len(alphabet))
+op82=>operation: bool_buff = False
+cond85=>condition: for j in range(len(key))
+cond103=>condition: if (alphabet[i] == key[j])
+op107=>operation: bool_buff = True
+sub109=>subroutine: break
+cond117=>operation: new_alphabet.append(alphabet[i]) if  (bool_buff == False)
+op129=>operation: mtx_abt_j = []
+op131=>operation: counter = 0
+cond134=>condition: for j in range(6)
+op159=>operation: mtx_abt_i = []
+cond162=>condition: for i in range(6)
+sub171=>subroutine: mtx_abt_i.append(new_alphabet[counter])
+op173=>operation: counter = (counter + 1)
+sub177=>subroutine: mtx_abt_j.append(mtx_abt_i)
+cond182=>operation: text = (text + 'я') if  ((len(text) % 2) == 1)
+op192=>operation: enc_text = ''
+cond195=>condition: for t in range(0, len(text), 2)
+op1356=>operation: flag = True
+cond1359=>condition: for j_1 in range(6)
+cond1938=>operation: break if  (flag == False)
+cond1949=>condition: for i_1 in range(6)
+cond2232=>operation: break if  (flag == False)
+cond2243=>condition: if (mtx_abt_j[j_1][i_1] == text[t])
+cond2248=>condition: for j_2 in range(6)
+cond2379=>operation: break if  (flag == False)
+cond2390=>condition: for i_2 in range(6)
+cond2449=>condition: if (mtx_abt_j[j_2][i_2] == text[(t + 1)])
+cond2454=>condition: if ((j_1 != j_2) and (i_1 != i_2))
+op2458=>operation: enc_text = ((enc_text + mtx_abt_j[j_1][i_2]) + mtx_abt_j[j_2][i_1])
+op2494=>operation: flag = False
+sub2496=>subroutine: break
+cond2463=>condition: if ((j_1 == j_2) and (i_1 != i_2))
+op2467=>operation: enc_text = ((enc_text + mtx_abt_j[j_1][((i_1 + 1) % 6)]) + mtx_abt_j[j_2][((i_2 + 1) % 6)])
+cond2472=>condition: if ((j_1 != j_2) and (i_1 == i_2))
+op2476=>operation: enc_text = ((enc_text + mtx_abt_j[((j_1 + 1) % 5)][i_1]) + mtx_abt_j[((j_2 + 1) % 5)][i_2])
+cond2481=>operation: enc_text = ((enc_text + mtx_abt_j[j_1][i_1]) + mtx_abt_j[j_1][i_1]) if  ((j_1 == j_2) and (i_1 == i_2))
+io2517=>inputoutput: output:  enc_text
+e2515=>end: end function return
+
+op2->op4
+op4->op6
+op6->st9
+st9->io11
+io11->op14
+op14->op16
+op16->cond19
+cond19->cond32
+cond32(yes)->op82
+op82->cond85
+cond85(yes)->cond103
+cond103(yes)->op107
+op107->sub109
+cond103(no)->cond85
+cond85(no)->cond117
+cond117->cond32
+cond32(no)->op129
+op129->op131
+op131->cond134
+cond134(yes)->op159
+op159->cond162
+cond162(yes)->sub171
+sub171->op173
+op173(left)->cond162
+cond162(no)->sub177
+sub177(left)->cond134
+cond134(no)->cond182
+cond182->op192
+op192->cond195
+cond195(yes)->op1356
+op1356->cond1359
+cond1359(yes)->cond1938
+cond1938->cond1949
+cond1949(yes)->cond2232
+cond2232->cond2243
+cond2243(yes)->cond2248
+cond2248(yes)->cond2379
+cond2379->cond2390
+cond2390(yes)->cond2449
+cond2449(yes)->cond2454
+cond2454(yes)->op2458
+op2458->op2494
+op2494->sub2496
+cond2454(no)->cond2463
+cond2463(yes)->op2467
+op2467->op2494
+cond2463(no)->cond2472
+cond2472(yes)->op2476
+op2476->op2494
+cond2472(no)->cond2481
+cond2481->op2494
+cond2449(no)->cond2390
+cond2390(no)->cond2248
+cond2248(no)->cond1949
+cond2243(no)->cond1949
+cond1949(no)->cond1359
+cond1359(no)->cond195
+cond195(no)->io2517
+io2517->e2515
+

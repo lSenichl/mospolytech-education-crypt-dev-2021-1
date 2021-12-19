@@ -1,0 +1,24 @@
+op2=>operation: from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
+st5=>start: start trithemius_decode
+io7=>inputoutput: input: input
+op10=>operation: decode: str = ''
+op12=>operation: k = 0
+cond15=>condition: for (position, symbol) in enumerate(input)
+op26=>operation: index = ((alphabet.find(symbol) + k) % len(alphabet))
+op28=>operation: decode += alphabet[index]
+op30=>operation: k -= 1
+io37=>inputoutput: output:  decode
+e35=>end: end function return
+
+op2->st5
+st5->io7
+io7->op10
+op10->op12
+op12->cond15
+cond15(yes)->op26
+op26->op28
+op28->op30
+op30(left)->cond15
+cond15(no)->io37
+io37->e35
+
