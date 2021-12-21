@@ -26,6 +26,14 @@ def playfair_encode(clearText, key):
             mtx_abt_i.append(new_alphabet[counter])
             counter = counter + 1
         mtx_abt_j.append(mtx_abt_i)
+    # проверка на одинаковые биграммы
+    for i in range(len(text) - 1):
+        if text[i] == text[i + 1]:
+            if text[i] != 'я':
+                text = text[:i + 1] + 'я' + text[i + 1:]
+            else:
+                text = text[:i + 1] + 'ю' + text[i + 1:]
+    # проверка на четную длину текста
     if len(text) % 2 == 1:
         text = text + "я"
     enc_text = ""
