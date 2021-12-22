@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="card text-white bg-dark mt-5">
+    <div class="card-body">
+        <h5 class="card-title">21. RSA</h5>
+    </div>
+</div>
+<form action="{{ url_for(request.endpoint) }}" method="post">
+    <div class="container pt-3">
+        <div class="row pb-2">
+            <label for="clear" class="form-label fw-bold">Ключ</label>
+            <div class="row">
+                <div class="col-6">P = <textarea class="form-control" id="p_key" name="p_key" rows="1">{{ p_key }}</textarea></div>
+                <div class="col-6">Q = <textarea class="form-control" id="q_key" name="q_key" rows="1">{{ q_key }}</textarea></div>
+            </div>
+            {% if public or private %}
+            <div class="row">
+                <div class="col-6">Публичный <textarea class="form-control" id="public" name="public" rows="1" readonly>{{ public }}</textarea></div>
+                <div class="col-6">Приватный <textarea class="form-control" id="private" name="private" rows="1" readonly>{{ private }}</textarea></div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="clear" class="form-label fw-bold">Исходный текст</label>
+                <textarea class="form-control" id="clear" name="clear" rows="16">{{ clear_text }}</textarea>
+            </div>
+            <div class="col-4">
+                <label for="encrypted" class="form-label fw-bold">Зашифрованный текст</label>
+                <textarea class="form-control" id="encrypted" name="encrypted" rows="16">{{ encrypted_text }}</textarea>
+            </div>
+            <div class="col-4">
+                <label for="decrypted" class="form-label fw-bold">Расшифрованный текст</label>
+                <textarea class="form-control" id="decrypted" name="decrypted" rows="16">{{ decrypted_text }}</textarea>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-4">
+                <button type="submit" class="btn btn-dark w-100">Зашифровать</button>
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-dark w-100">Расшифровать</button>
+            </div>
+            <div class="col-4">
+                <a href="{{ url_for(request.endpoint) }}" class="btn btn-dark w-100">Очистить</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

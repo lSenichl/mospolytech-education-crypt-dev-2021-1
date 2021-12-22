@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="card text-white bg-dark mt-5">
+    <div class="card-body">
+        <h5 class="card-title">28. Обмен ключами по Диффи-Хеллману</h5>
+    </div>
+</div>
+<form action="{{ url_for(request.endpoint) }}" method="post">
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col-4"><label for="clear" class="form-label fw-bold">Число a:</label>
+                <textarea class="form-control" id="a" name="a" rows="1">{{ a }}</textarea></div>
+            <div class="col-4"><label for="clear" class="form-label fw-bold">Число n (должно быть больше a):</label>
+                <textarea class="form-control" id="n" name="n" rows="1">{{ n }}</textarea></div>
+            <div class="col-4"><label for="clear" class="form-label fw-bold">Число Ka:</label>
+                <textarea class="form-control" id="ka" name="ka" rows="1">{{ ka }}</textarea></div>
+        </div>
+        <div class="row pt-2">
+            <button type="submit" class="btn btn-dark w-100">Вычислить Ya</button>
+        </div>
+
+        {% if Ya %}
+        <div class="row pt-2">
+            <label for="clear" class="form-label fw-bold">Ваш Ya:</label>
+            <textarea class="form-control" id="Ya" name="Ya" rows="1">{{ Ya }}</textarea>
+        </div>
+        <div class="row pt-2">
+            <label for="clear" class="form-label fw-bold">Введите число Yb, которое прислал собеседник: </label>
+            <textarea class="form-control" id="Yb" name="Yb" rows="1">{{ Yb }}</textarea>
+        </div>
+        <div class="row pt-2">
+            <button type="submit" class="btn btn-dark w-100">Вычислить общий ключ</button>
+        </div>
+        {% endif %} {% if K %}
+        <div class="row pt-2">
+            <label for="clear" class="form-label fw-bold">Ваш общий ключ K:</label>
+            <textarea class="form-control" id="K" name="K" rows="1">{{ K }}</textarea>
+        </div>
+        <div class="row pt-2"><a href="{{ url_for(request.endpoint) }}" class="btn btn-dark w-100">Очистить</a></div>
+        {% endif %}
+    </div>
+</form>
+
+{% endblock %}

@@ -24,8 +24,7 @@ class GostCrypt(object):
     @key.setter
     def key(self, key):
         self._key = key
-        self._subkeys = [(key >> (32 * i)) &
-                         0xFFFFFFFF for i in range(8)]
+        self._subkeys = [(key >> (32 * i)) & 0xFFFFFFFF for i in range(8)]
 
     def _f(self, part, key):
         temp = part ^ key
