@@ -1,6 +1,8 @@
+# импорт компонентов, необходимых для работы программы
 from math import gcd
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+# объявление алфавита
 alphabet_lower = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
                   'е': 5, 'ё': 6, 'ж': 7, 'з': 8, 'и': 9, 'й': 10,
                   'к': 11, 'л': 12, 'м': 13, 'н': 14, 'о': 15,
@@ -10,14 +12,14 @@ alphabet_lower = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
                   'ю': 31, 'я': 32
                   }
 
-
+# функция проверки числа на простоту
 def IsPrime(n):
     d = 2
     while n % d != 0:
         d += 1
     return d == n
 
-
+# функция получения обратного числа
 def modInverse(e, el):
     e = e % el
     for x in range(1, el):
@@ -25,12 +27,12 @@ def modInverse(e, el):
             return x
     return 1
 
-
+# функция проверки подписи
 def check_signature(sign_msg, n, e):
     check = (sign_msg**e) % n
     return check
 
-
+# функция хэширования
 def hash_value(n, alpha_code_msg):
     i = 0
     hashing_value = 1
@@ -39,12 +41,12 @@ def hash_value(n, alpha_code_msg):
         i += 1
     return hashing_value
 
-
+# функция получения подписи
 def signature_msg(hash_code, n, d):
     sign = (hash_code**d) % n
     return sign
 
-
+# функция вычисления подписи
 def rsacipher(p, q, clearText):
     p = int(p)
     print('p: ', IsPrime(p))
@@ -82,7 +84,7 @@ def rsacipher(p, q, clearText):
     check_sign = check_signature(sign_msg, n, e)
     print("Значение проверки хэша = {}\n".format(check_sign))
 
-
+#вывод результатов работы программы
 def main():
     print('ЭЦП RSA:')
     print('КОРОТКИЙ ТЕКСТ:')

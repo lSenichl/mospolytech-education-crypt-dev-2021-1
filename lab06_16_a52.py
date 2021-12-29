@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import sys
 import copy
@@ -15,7 +16,7 @@ reg_y = []
 reg_z = []
 reg_e = []
 
-
+# функция загрузки регистров
 def loading_registers(key):
     i = 0
     while(i < reg_x_length):
@@ -38,7 +39,7 @@ def loading_registers(key):
         reg_e.insert(i, int(key[i]))
         i = i + 1
 
-
+# функция установки ключа
 def set_key(key):
     if(len(key) == 64 and re.match("^([01])+", key)):
         key_one = key
@@ -50,7 +51,7 @@ def set_key(key):
 def get_key():
     return key_one
 
-
+# функция перевода текста в бинарный код
 def to_binary(plain):
     s = ""
     i = 0
@@ -75,7 +76,7 @@ def get_majority(x, y, z):
     else:
         return 0
 
-
+# функция получения потока
 def get_keystream(length):
     reg_x_temp = copy.deepcopy(reg_x)
     reg_y_temp = copy.deepcopy(reg_y)
@@ -116,7 +117,7 @@ def get_keystream(length):
         i = i + 1
     return keystream
 
-
+# функция перевода бинарного кода в текст
 def convert_binary_to_str(binary):
     s = ""
     length = len(binary) - 12
@@ -126,7 +127,7 @@ def convert_binary_to_str(binary):
         i = i + 12
     return str(s)
 
-
+# функция шифрования
 def encrypt(plain):
     s = ""
     binary = to_binary(plain)
@@ -137,7 +138,7 @@ def encrypt(plain):
         i = i + 1
     return s
 
-
+# функция расшифрования
 def decrypt(cipher):
     s = ""
     binary = []
@@ -149,7 +150,7 @@ def decrypt(cipher):
         i = i + 1
     return convert_binary_to_str(str(s))
 
-
+# функция проверки введенного ключа
 def user_input_key():
     tha_key = str(input('Введите 64-bit ключ: '))
     if (len(tha_key) == 64 and re.match("^([01])+", tha_key)):
@@ -161,11 +162,11 @@ def user_input_key():
             tha_key = str(input('Введите 64-bit ключ: '))
     return tha_key
 
-
+# установка ключа
 key = '0101001000011010110001110001100100101001000000110111111010110111'
 set_key(key)
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     A5/2:

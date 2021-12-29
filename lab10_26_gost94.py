@@ -1,5 +1,7 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+# объявление алфавита
 alphavit = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'е': 5, 'ё': 6, 'ж': 7, 'з': 8, 'и': 9, 'й': 10,
             'к': 11, 'л': 12, 'м': 13, 'н': 14, 'о': 15,
@@ -9,7 +11,7 @@ alphavit = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'ю': 31, 'я': 32
             }
 
-
+# функция вычисления подписи
 def ciphergostd(clearText):
     array = []
     flag = False
@@ -70,7 +72,7 @@ def ciphergostd(clearText):
     else:
         print("Подпись неверна")
 
-
+# функция хэширования
 def hash_value(n, alpha_code):
     i = 0
     hash = 1
@@ -79,6 +81,7 @@ def hash_value(n, alpha_code):
         i += 1
     return hash
 
+#вывод результатов работы программы
 def main():
     print('ГОСТ Р 34.10-94:')
     print('КОРОТКИЙ ТЕКСТ:')

@@ -1,3 +1,4 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
 pi0 = [12, 4, 6, 2, 10, 5, 11, 9, 14, 8, 13, 7, 0, 3, 15, 1]
@@ -53,7 +54,7 @@ def magma_key_schedule(k):
         keys.append(keys[i])
     return keys
 
-
+# функция шифрования
 def magma_encrypt(x, k):
     keys = magma_key_schedule(k)
     (L, R) = split(x)
@@ -61,7 +62,7 @@ def magma_encrypt(x, k):
         (L, R) = (R, L ^ g(R, keys[i]))
     return join(L ^ g(R, keys[-1]), R)
 
-
+# функция расшифрования
 def magma_decrypt(x, k):
     keys = magma_key_schedule(k)
     keys.reverse()
@@ -70,7 +71,7 @@ def magma_decrypt(x, k):
         (L, R) = (R, L ^ g(R, keys[i]))
     return join(L ^ g(R, keys[-1]), R)
 
-
+# установка ключа
 key = int('ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff', 16)
 
 i = 0
@@ -105,7 +106,7 @@ for i in encr_long:
     dt = magma_decrypt(i, key)
     decr_long.append(bytes.fromhex(hex(dt)[2::]).decode('utf-8'))
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     МАГМА:

@@ -1,3 +1,4 @@
+# импорт компонентов, необходимых для работы программы
 import random
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
@@ -8,13 +9,13 @@ while i < (len(alphabet)):
     alphabet_lower.update({alphabet[i]: i})
     i += 1
 
-
+# фунция получения ключа
 def get_key(d, value):
     for k, v in d.items():
         if v == value:
             return k
 
-
+# функция шифрования
 def shenon_encode(msg):
     msg_list = list(msg)
     msg_list_len = len(msg_list)
@@ -33,7 +34,7 @@ def shenon_encode(msg):
         cipher_list.append(int(bin(m ^ k), base=2))
     return cipher_list, key_list
 
-
+# функция расшифрования
 def shenon_decode(msg, key_list):
     decipher_list = list()
     msg_list_len = len(msg)
@@ -53,7 +54,7 @@ short_decoded = shenon_decode(short_encoded[0], short_encoded[1])
 long_encoded = shenon_encode(input_for_cipher_long())
 long_decoded = shenon_decode(long_encoded[0], long_encoded[1])
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Одноразовый блокнот:

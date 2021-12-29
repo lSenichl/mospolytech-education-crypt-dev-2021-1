@@ -1,6 +1,7 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-
+# функция расшифрования
 def trithemius_decode(input):
     decode: str = ""
     k = 0
@@ -10,7 +11,7 @@ def trithemius_decode(input):
         k -= 1
     return decode
 
-
+# функция шифрования
 def trithemius_encode(input):
     encode = ""
     k = 0
@@ -20,7 +21,7 @@ def trithemius_encode(input):
         k += 1
     return encode
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Шифр Тритемия:

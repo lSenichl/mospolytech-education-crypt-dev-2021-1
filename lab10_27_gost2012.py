@@ -1,7 +1,9 @@
+# импорт компонентов, необходимых для работы программы
 import random
 import collections
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+# объявление алфавита
 alphabet_lower = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'е': 5, 'ё': 6, 'ж': 7, 'з': 8, 'и': 9, 'й': 10,
             'к': 11, 'л': 12, 'м': 13, 'н': 14, 'о': 15,
@@ -11,7 +13,7 @@ alphabet_lower = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'ю': 31, 'я': 32
             }
 
-
+# объявление класса точки
 class Point:
     def __init__(self, x_init, y_init):
         self.x = x_init
@@ -28,6 +30,7 @@ class Point:
 x_1 = 0
 y_1 = 0
 
+# инициализация элептической кривой
 EllipticCurve = collections.namedtuple(
     'EllipticCurve', 'name p q_mod a b q g n h')
 curve = EllipticCurve(
@@ -48,7 +51,7 @@ curve = EllipticCurve(
     h=1,
 )
 
-
+# функция вычисления подписи
 def ciphergosto(clearText):
     msg = clearText
     msg_list = list(msg)
@@ -95,7 +98,7 @@ def ciphergosto(clearText):
     else:
         print("Ошибка проверки!")
 
-
+# функция хэширования
 def hash_value(mod, alpha_code_msg):
     i = 0
     hashing_value = 1
@@ -105,7 +108,7 @@ def hash_value(mod, alpha_code_msg):
         i += 1
     return hashing_value
 
-
+# функция проверки принадлежности точки кривой
 def is_on_curve(point):
     if point is None:
         return True
@@ -114,7 +117,7 @@ def is_on_curve(point):
 
     return (y * y - x * x * x - curve.a * x - curve.b) % curve.p == 0
 
-
+# функция получения обратной точки
 def point_neg(point):
     if point is None:
         return None
@@ -122,7 +125,7 @@ def point_neg(point):
     result = (x, -y % curve.p)
     return result
 
-
+# функция вычисления обратного по модулю числа
 def inverse_mod(k, p):
     if k == 0:
         raise ZeroDivisionError('деление на 0')
@@ -147,7 +150,7 @@ def inverse_mod(k, p):
 
     return x % p
 
-
+# функция добавления точки
 def point_add(point1, point2):
     if point1 is None:
         return point2
@@ -171,7 +174,7 @@ def point_add(point1, point2):
               -y3 % curve.p)
     return result
 
-
+# функция скалярного умножения
 def scalar_mult(k, point):
     if k % curve.n == 0 or point is None:
         return None
@@ -189,7 +192,7 @@ def scalar_mult(k, point):
         k >>= 1
     return result
 
-
+#вывод результатов работы программы
 def main():
     print('ГОСТ Р 34.10-2012:')
     print('КОРОТКИЙ ТЕКСТ:')

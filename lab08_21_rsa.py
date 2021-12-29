@@ -1,20 +1,21 @@
 # -*- coding:utf-8 -*-
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import random
 
-
+# функция вычисления НОД
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
     return a
 
-
+# функция получения обратного числа
 def multiplicative_inverse(e, r):
     for i in range(r):
         if((e*i) % r == 1):
             return i
 
-
+# функция проверки числа на простоту
 def is_prime(num):
     if num == 2:
         return True
@@ -25,7 +26,7 @@ def is_prime(num):
             return False
     return True
 
-
+# функция генерации пары ключей
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):
         raise ValueError('Оба числа должны быть простыми.')
@@ -44,22 +45,21 @@ def generate_keypair(p, q):
     d = multiplicative_inverse(e, phi)
     return ((e, n), (d, n))
 
-
+# функция шифрования
 def encrypt(pk, plaintext):
     key, n = pk
     cipher = [(ord(char) ** key) % n for char in plaintext]
     return cipher
 
-
+# функция расшифрования
 def decrypt(pk, ciphertext):
     key, n = pk
     plain = [chr((char ** key) % n) for char in ciphertext]
     return ''.join(plain)
 
-
+# установка ключа
 p = 107
 q = 109
-
 public, private = generate_keypair(p, q)
 
 message_short = input_for_cipher_short()
@@ -72,7 +72,7 @@ encrypted_long = encrypt(private, message_long)
 print_enc_long = ''.join([str(x) for x in encrypted_long])
 decrypted_long = decrypt(public, encrypted_long)
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     RSA:

@@ -1,8 +1,10 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+# установка ключа
 key = 'ключ'
 
-
+# функция расшифрования
 def bellaso_decode(input, key):
     decrypted = ''
     offset = 0
@@ -19,7 +21,7 @@ def bellaso_decode(input, key):
         decrypted += output
     return decrypted
 
-
+# функция шифрования
 def bellaso_encode(input, key):
     encoded = ''
     offset = 0
@@ -36,7 +38,7 @@ def bellaso_encode(input, key):
         encoded += output
     return encoded
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Шифр Белазо:

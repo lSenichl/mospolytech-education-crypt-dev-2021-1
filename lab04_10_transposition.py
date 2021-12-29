@@ -1,9 +1,11 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import math
 
+# установка ключа
 key = 'ключ'
 
-
+# функция шифрования
 def transposition_encode(msg, key):
     cipher = ""
 
@@ -29,7 +31,7 @@ def transposition_encode(msg, key):
 
     return cipher
 
-
+# функция расшифрования
 def transposition_decode(cipher, key):
     msg = ""
 
@@ -66,7 +68,7 @@ def transposition_decode(cipher, key):
 
     return msg.replace('_', '')
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Шифр вертикальной перестановки:

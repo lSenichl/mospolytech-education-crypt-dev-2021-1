@@ -1,10 +1,12 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
 alphabet = alphabet.replace(' ', '') + 'abc'
 
+# установка ключа
 key = 'ключ'
 
-
+# функция шифрования
 def playfair_encode(clearText, key):
     text = clearText
     new_alphabet = []
@@ -71,7 +73,7 @@ def playfair_encode(clearText, key):
                                 break
     return enc_text
 
-
+# функция расшифрования
 def playfair_decode(clearText, key):
     text = clearText
     new_alphabet = []
@@ -130,7 +132,7 @@ def playfair_decode(clearText, key):
                                 break
     return enc_text
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Шифр Плейфера:

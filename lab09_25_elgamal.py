@@ -1,7 +1,9 @@
+# импорт компонентов, необходимых для работы программы
 from math import gcd
 import random
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
+# объявление алфавита
 alphavit = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'е': 5, 'ё': 6, 'ж': 7, 'з': 8, 'и': 9, 'й': 10,
             'к': 11, 'л': 12, 'м': 13, 'н': 14, 'о': 15,
@@ -11,14 +13,14 @@ alphavit = {'а': 0, 'б': 1, 'в': 2, 'г': 3, 'д': 4,
             'ю': 31, 'я': 32
             }
 
-
+# функция проверки числа на простоту
 def IsPrime(n):
     d = 2
     while n % d != 0:
         d += 1
     return d == n
 
-
+# функция получения обратного числа
 def modInverse(e, el):
     e = e % el
     for x in range(1, el):
@@ -26,7 +28,7 @@ def modInverse(e, el):
             return x
     return 1
 
-
+# функция проверки числа на простоту с заданным числом попыток
 def is_prime(num, test_count):
     if num == 1:
         return False
@@ -38,7 +40,7 @@ def is_prime(num, test_count):
             return False
     return True
 
-
+# функция генерации простого числа
 def gen_prime(n):
     found_prime = False
     while not found_prime:
@@ -46,7 +48,7 @@ def gen_prime(n):
         if is_prime(p, 1000):
             return p
 
-
+# функция хэширования
 def hash_value(mod, alpha_code_msg):
     i = 0
     hashing_value = 1
@@ -55,7 +57,7 @@ def hash_value(mod, alpha_code_msg):
         i += 1
     return hashing_value
 
-
+# функция вычисления подписи
 def egcipher(clearText):
     p = gen_prime(10)
     print("P =", p)
@@ -99,7 +101,7 @@ def egcipher(clearText):
     else:
         print("Подпись неверна")
 
-
+#вывод результатов работы программы
 def main():
     print('ЭЦП Elgamal:')
     print('КОРОТКИЙ ТЕКСТ:')

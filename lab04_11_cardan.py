@@ -1,7 +1,9 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 
-
+# объявление класса
 class Cardan(object):
+    # функция инициализации класса
     def __init__(self, size, spaces):
         self.size = int(size)
         str1 = ''
@@ -18,6 +20,7 @@ class Cardan(object):
             matrix_spaces.append(t)
         self.spaces = matrix_spaces
 
+    # функция шифрования
     def code(self, message):
         offset = 0
         cipher_text = ""
@@ -52,6 +55,7 @@ class Cardan(object):
                 self.spaces[i] = x, y
         return cipher_text
 
+    # функция расшифрования
     def decode(self, message, size):
         uncipher_text = ""
         offset = 0
@@ -86,16 +90,16 @@ class Cardan(object):
 
         return uncipher_text
 
-
+# установка ключа
 gaps = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1),
         (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
 r = Cardan(8, gaps)
 
-texto = input_for_cipher_short()
+texto_short = input_for_cipher_short()
 
-n = len(texto)
-encoded = r.code(texto)
-decoded = r.decode(encoded, n)
+n = len(texto_short)
+encoded_short = r.code(texto_short)
+decoded_short = r.decode(encoded_short, n)
 
 gaps2 = [(7, 7), (6, 0), (5, 0), (4, 0), (7, 1), (1, 1), (1, 2), (4, 1),
          (7, 2), (2, 1), (2, 5), (2, 3), (7, 3), (3, 1), (3, 2), (3, 4)]
@@ -107,17 +111,17 @@ n = len(texto_long)
 encoded_long = r2.code(texto_long)
 decoded_long = r2.decode(encoded_long, n)
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Решетка Кардано:
     Ключ: {gaps}
     КОРОТКИЙ ТЕКСТ:
     Зашифрованный текст:
-    {encoded.replace(' ', '')}
+    {encoded_short.replace(' ', '')}
     
     Расшифрованный текст:
-    {output_from_decrypted(decoded)}
+    {output_from_decrypted(decoded_short)}
     
     ДЛИННЫЙ ТЕКСТ:
     Зашифрованный текст:

@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
+# импорт компонентов, необходимых для работы программы
 import sys
 import numpy.random
 import itertools
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import binascii
 
-
+# объявление класса
 class GostCrypt(object):
     def __init__(self, key, sbox):
         self._key = None
@@ -36,6 +37,7 @@ class GostCrypt(object):
     def _decrypt_round(self, left_part, right_part, round_key):
         return left_part, right_part ^ self._f(left_part, round_key)
 
+    # функция шифрования
     def encrypt(self, plain_msg):
         def _encrypt_round(left_part, right_part, round_key):
             return right_part, left_part ^ self._f(right_part, round_key)
@@ -50,6 +52,7 @@ class GostCrypt(object):
                 left_part, right_part, self._subkeys[7 - i])
         return (left_part << 32) | right_part
 
+    # функция расшифрования
     def decrypt(self, crypted_msg):
         def _decrypt_round(left_part, right_part, round_key):
             return right_part ^ self._f(left_part, round_key), left_part
@@ -64,7 +67,7 @@ class GostCrypt(object):
                 left_part, right_part, self._subkeys[(7 - i) % 8])
         return (left_part << 32) | right_part
 
-
+# объявление S-блока
 sbox = [numpy.random.permutation(l)
         for l in itertools.repeat(list(range(16)), 8)]
 sbox = (
@@ -78,6 +81,7 @@ sbox = (
     (1, 15, 13, 0, 5, 7, 10, 4, 9, 2, 3, 14, 6, 11, 8, 12),
 )
 
+# установка ключа
 key = 18318279387912387912789378912379821879387978238793278872378329832982398023031
 
 text_short = input_for_cipher_short().encode().hex()
@@ -99,7 +103,7 @@ encode_text_long = gost_long.encrypt(text_long)
 decode_text_long = gost_long.decrypt(encode_text_long)
 decode_text_long = bytes.fromhex(hex(decode_text_long)[2::]).decode('utf-8')
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Гост 28147-89:

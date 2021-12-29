@@ -1,17 +1,17 @@
+# импорт компонентов, необходимых для работы программы
 from base import alphabet, input_for_cipher_short, input_for_cipher_long, output_from_decrypted
 import numpy as np
 from egcd import egcd
 
+# установка ключа
 key1 = '3 10 20 20 19 17 23 78 17'
 inp = key1.split(' ')
-
-key = np.matrix([[int(inp[0]), int(inp[1]), int(inp[2])], [int(inp[3]), int(
-    inp[4]), int(inp[5])], [int(inp[6]), int(inp[7]), int(inp[8])]])
+key = np.matrix([[int(inp[0]), int(inp[1]), int(inp[2])], [int(inp[3]), int(inp[4]), int(inp[5])], [int(inp[6]), int(inp[7]), int(inp[8])]])
 
 letter_to_index = dict(zip(alphabet, range(len(alphabet))))
 index_to_letter = dict(zip(range(len(alphabet)), alphabet))
 
-
+# функция вычисления обратной матрицы
 def matrix_mod_inv(matrix, modulus):
     det = int(np.round(np.linalg.det(matrix)))
     det_inv = egcd(det, modulus)[1] % modulus
@@ -21,7 +21,7 @@ def matrix_mod_inv(matrix, modulus):
 
     return matrix_modulus_inv
 
-
+# функция шифрования
 def matrix_encode(message, K):
     encrypted = ""
     message_in_numbers = []
@@ -47,7 +47,7 @@ def matrix_encode(message, K):
             encrypted += index_to_letter[number]
     return encrypted
 
-
+# функция расшифрования
 def matrix_decode(cipher, Kinv):
     decrypted = ""
     cipher_in_numbers = []
@@ -69,7 +69,7 @@ def matrix_decode(cipher, Kinv):
             decrypted += index_to_letter[number]
     return decrypted
 
-
+#вывод результатов работы программы
 def main():
     print(f'''
     Матричный шифр:
