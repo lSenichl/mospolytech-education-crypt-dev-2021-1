@@ -23,7 +23,7 @@ def t(x):
         y ^= pi[i][j]
     return y
 
-
+# функция сдвига на 11
 def rot11(x):
     return ((x << 11) ^ (x >> (32 - 11))) & MASK32
 
