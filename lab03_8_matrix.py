@@ -23,6 +23,10 @@ def matrix_mod_inv(matrix, modulus):
 
 # функция шифрования
 def matrix_encode(message, K):
+    # проверка на определитель равный 0
+    if np.linalg.det(K) == 0:
+        raise ValueError('Определитель матрицы равен 0! Дальнейшая работа программы невозможна!')
+    
     encrypted = ""
     message_in_numbers = []
     for letter in message:
