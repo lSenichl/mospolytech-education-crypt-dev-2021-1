@@ -58,8 +58,8 @@ def decrypt(pk, ciphertext):
     return ''.join(plain)
 
 # установка ключа
-p = 107
-q = 109
+p = 31
+q = 37
 public, private = generate_keypair(p, q)
 
 message_short = input_for_cipher_short()
@@ -82,6 +82,7 @@ def main():
     Приватный: {private}
     КОРОТКИЙ ТЕКСТ:
     Зашифрованный текст:
+    {encrypted_short}
     {print_enc_short}
     
     Расшифрованный текст:
